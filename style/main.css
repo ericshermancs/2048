@@ -481,10 +481,10 @@ hr {
     -ms-transform: scale(0);
     transform: scale(0); }
   50% {
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    transform: scale(1.2); }
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    transform: scale(1.5); }
   100% {
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
@@ -497,10 +497,10 @@ hr {
     -ms-transform: scale(0);
     transform: scale(0); }
   50% {
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    transform: scale(1.2); }
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    transform: scale(1.5); }
   100% {
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
@@ -513,10 +513,10 @@ hr {
     -ms-transform: scale(0);
     transform: scale(0); }
   50% {
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    transform: scale(1.2); }
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    transform: scale(1.5); }
   100% {
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
