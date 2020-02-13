@@ -506,7 +506,7 @@ hr {
     -moz-transform: scale(1);
     -ms-transform: scale(1);
     transform: scale(1); } }
-@keyframes pop {
+@keyframes pop { 
   0% {
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
