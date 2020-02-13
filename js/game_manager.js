@@ -4,7 +4,7 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
   this.storageManager = new StorageManager;
   this.actuator       = new Actuator;
 
-  this.startTiles     = 2;
+  this.startTiles     = 4;
 
   this.inputManager.on("move", this.move.bind(this));
   this.inputManager.on("restart", this.restart.bind(this));
@@ -68,8 +68,25 @@ GameManager.prototype.addStartTiles = function () {
 // Adds a tile in a random position
 GameManager.prototype.addRandomTile = function () {
   if (this.grid.cellsAvailable()) {
-    var value = Math.random() < 0.9 ? 2 : 4;
-    var tile = new Tile(this.grid.randomAvailableCell(), value);
+    var value = 2;
+    var prob = Math.random();
+    //console.log(prob);
+    if (prob < .8){
+      op = '+';
+      value = Math.random() < 0.9 ? 2 : 4;
+    }
+    else if(prob<.82){
+      op='0';
+      value=0;
+    }
+    else if(prob<.91){
+      op='*';
+    }
+    else if(prob<1){
+      op='/';
+    }
+    //console.log(op);
+    var tile = new Tile(this.grid.randomAvailableCell(), value, op);
 
     this.grid.insertTile(tile);
   }
@@ -130,7 +147,7 @@ GameManager.prototype.moveTile = function (tile, cell) {
 GameManager.prototype.move = function (direction) {
   // 0: up, 1: right, 2: down, 3: left
   var self = this;
-
+  self.score = 0;
   if (this.isGameTerminated()) return; // Don't do anything if the game's over
 
   var cell, tile;
@@ -151,23 +168,113 @@ GameManager.prototype.move = function (direction) {
       if (tile) {
         var positions = self.findFarthestPosition(cell, vector);
         var next      = self.grid.cellContent(positions.next);
-
+        console.log("tile", tile);
+        console.log("next", next);
         // Only one merger per row traversal?
-        if (next && next.value === tile.value && !next.mergedFrom) {
-          var merged = new Tile(positions.next, tile.value * 2);
-          merged.mergedFrom = [tile, next];
+        if (next && !next.mergedFrom) {
+          // execute regular merge if values equal and both + op
+          if(next.value === tile.value && next.op==tile.op && next.op=='+'){
+            var merged = new Tile(positions.next, tile.value * 2, '+');
+            merged.mergedFrom = [tile, next];
 
-          self.grid.insertTile(merged);
-          self.grid.removeTile(tile);
+            self.grid.insertTile(merged);
+            self.grid.removeTile(tile);
 
-          // Converge the two tiles' positions
-          tile.updatePosition(positions.next);
+            // Converge the two tiles' positions
+            tile.updatePosition(positions.next);
 
-          // Update the score
-          self.score += merged.value;
+          }
+          else if(next.op==tile.op && next.op=='+' && next.value!=tile.value){
+            self.moveTile(tile, positions.farthest);
+          }
+          // execute special merge if one if + but not both
+          else if((next.op=='+' || tile.op=='+') && !(next.op=='+' && tile.op=='+')){
+            var opTile, valTile;
+            var newValue = null;
+            if (next.op=='+'){
+               opTile = tile;
+               valTile = next;
+            }
+            else{
+              opTile = next;
+              valTile = tile;
+            }
+            if(opTile.op == '*'){
+              newValue = valTile.value * opTile.value;
+            }
+            else if(opTile.op == '/'){
+              if(valTile.value >= 2*opTile.value){
+                newValue = valTile.value / opTile.value;
+              }
+              // if the number is too small to divide by this op tile
+              else{
+                self.moveTile(tile, positions.farthest);
+              }
+            }
+            else if(opTile.op=='0'){
+              self.grid.removeTile(tile);
+              self.grid.removeTile(next);
+              tile.updatePosition(positions.next);
+            }
 
-          // The mighty 2048 tile
-          if (merged.value === 2048) self.won = true;
+            if(newValue!=null){
+              var merged = new Tile(positions.next, newValue, '+');
+              merged.mergedFrom = [tile, next];
+
+              self.grid.insertTile(merged);
+              self.grid.removeTile(tile);
+              tile.updatePosition(positions.next);
+            }
+            else{
+              console.log(next);
+              console.log(tile);
+            }
+          }
+          else if(next.op!='+' && tile.op!='+'){
+            // both are ops
+            console.log('both ops!')
+            var ops = new Map();
+            ops.set(next.op, next);
+            ops.set(tile.op, tile);
+            console.log(ops.size);
+            console.log(ops);
+            console.log(ops.has('*') && ops.size==1)
+            if(ops.has('*') && ops.has('/')){
+              console.log('ops cancel out');
+              if(ops.get('*').value == ops.get('/').value){
+                self.grid.removeTile(tile);
+                self.grid.removeTile(next);
+                tile.updatePosition(positions.next);  
+              }
+              else if(ops['*'].value > ops['/'].value){
+                var merged = new Tile(positions.next, ops['*'].value / ops['/'].value, '*');
+                merged.mergedFrom = [tile, next];
+
+                self.grid.insertTile(merged);
+                self.grid.removeTile(tile);
+
+                // Converge the two tiles' positions
+                tile.updatePosition(positions.next); 
+              }
+
+            }
+            else if((ops.has('/') || ops.has('*')) && ops.size==1){
+              console.log('** merged');
+              var merged = new Tile(positions.next, next.value * tile.value, tile.op);
+              merged.mergedFrom = [tile, next];
+
+              self.grid.insertTile(merged);
+              self.grid.removeTile(tile);
+
+              // Converge the two tiles' positions
+              tile.updatePosition(positions.next); 
+            }
+            else if(ops.has('0')){
+              self.grid.removeTile(tile);
+              self.grid.removeTile(next);
+              tile.updatePosition(positions.next);
+            }
+          }
         } else {
           self.moveTile(tile, positions.farthest);
         }
@@ -180,11 +287,23 @@ GameManager.prototype.move = function (direction) {
   });
 
   if (moved) {
+    for (var x = 0; x < this.size; x++) {
+      for (var y = 0; y < this.size; y++) {
+        tile = this.grid.cellContent({ x: x, y: y });
+        console.log(tile);
+        if(tile){
+          if(tile.op=='+'){
+            self.score += tile.value;
+          } 
+        }
+      }
+    }
     this.addRandomTile();
 
     if (!this.movesAvailable()) {
       this.over = true; // Game over!
     }
+
 
     this.actuate();
   }
@@ -255,7 +374,7 @@ GameManager.prototype.tileMatchesAvailable = function () {
           var cell   = { x: x + vector.x, y: y + vector.y };
 
           var other  = self.grid.cellContent(cell);
-
+          // NOTE THIS NEEDS TO BE UPDATED FOR THE OPS
           if (other && other.value === tile.value) {
             return true; // These two tiles can be merged
           }

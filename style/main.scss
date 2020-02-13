@@ -1,11 +1,11 @@
 @import "helpers";
 @import "fonts/clear-sans.css";
 
-$field-width: 500px;
-$grid-spacing: 15px;
-$grid-row-cells: 4;
+$field-width: 400px;
+$grid-spacing: 10px;
+$grid-row-cells: 5;
 $tile-size: ($field-width - $grid-spacing * ($grid-row-cells + 1)) / $grid-row-cells;
-$tile-border-radius: 3px;
+$tile-border-radius: 10px;
 
 $mobile-threshold: $field-width + 20px;
 
@@ -15,11 +15,11 @@ $bright-text-color: #f9f6f2;
 $tile-color: #eee4da;
 $tile-gold-color: #edc22e;
 $tile-gold-glow-color: lighten($tile-gold-color, 15%);
-
+$all-border-radius: 10px;
 $game-container-margin-top: 40px;
-$game-container-background: #bbada0;
+$game-container-background: #1a3ca2;
 
-$transition-speed: 100ms;
+$transition-speed: 150ms;
 
 html, body {
   margin: 0;
@@ -32,7 +32,7 @@ html, body {
 }
 
 body {
-  margin: 80px 0;
+  margin: 0px 0;
 }
 
 .heading {
@@ -79,7 +79,7 @@ h1.title {
   color: white;
   margin-top: 8px;
   text-align: center;
-
+ 
   &:after {
     position: absolute;
     width: 100%;
@@ -252,6 +252,7 @@ hr {
   .grid-container {
     position: absolute;
     z-index: 1;
+    background: $game-container-background;
   }
 
   .grid-row {
@@ -276,7 +277,7 @@ hr {
 
     border-radius: $tile-border-radius;
 
-    background: rgba($tile-color, .35);
+    background: rgb(142, 218, 85);;
 
     &:last-child {
       margin-right: 0;
@@ -322,7 +323,7 @@ hr {
     font-weight: bold;
     z-index: 10;
 
-    font-size: 55px;
+    font-size: 40px;
   }
 
   // Movement transition
@@ -373,13 +374,6 @@ hr {
       // Set background
       background: $mixed-background;
 
-      // Add glow
-      $glow-opacity: max($exponent - 4, 0) / ($limit - 4);
-
-      @if not $special-background {
-        box-shadow: 0 0 30px 10px rgba($tile-gold-glow-color, $glow-opacity / 1.8),
-                    inset 0 0 0 1px rgba(white, $glow-opacity / 3);
-      }
 
       // Adjust font size for bigger numbers
       @if $power >= 100 and $power < 1000 {
@@ -451,6 +445,7 @@ hr {
   @include animation-fill-mode(backwards);
 }
 
+
 .above-game {
   @include clearfix;
 }
@@ -478,7 +473,7 @@ hr {
   $grid-spacing: 10px;
   $grid-row-cells: 4;
   $tile-size: ($field-width - $grid-spacing * ($grid-row-cells + 1)) / $grid-row-cells;
-  $tile-border-radius: 3px;
+  $tile-border-radius: 10px;
   $game-container-margin-top: 17px;
 
   html, body {

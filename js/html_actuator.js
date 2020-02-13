@@ -62,8 +62,19 @@ HTMLActuator.prototype.addTile = function (tile) {
   this.applyClasses(wrapper, classes);
 
   inner.classList.add("tile-inner");
-  inner.textContent = tile.value;
-
+  var content;
+  if(tile.op=='+')
+    content = tile.value;
+  else if(tile.op=='*')
+    content = 'x'+tile.value;
+  else if(tile.op=='/')
+    content = '÷'+tile.value
+  else if (tile.op=='0')
+    content = '<img src="https://image.flaticon.com/icons/svg/486/486828.svg">'
+  else{
+    console.log(tile);
+  }
+  inner.innerHTML = content
   if (tile.previousPosition) {
     // Make sure that the tile gets rendered in the previous position first
     window.requestAnimationFrame(function () {
@@ -110,13 +121,15 @@ HTMLActuator.prototype.updateScore = function (score) {
   this.score = score;
 
   this.scoreContainer.textContent = this.score;
+  var addition = document.createElement("div");
+  addition.classList.add("score-addition");
+  this.scoreContainer.appendChild(addition);
 
   if (difference > 0) {
-    var addition = document.createElement("div");
-    addition.classList.add("score-addition");
     addition.textContent = "+" + difference;
-
-    this.scoreContainer.appendChild(addition);
+  }
+  else if(difference < 0){
+    addition.textContent = difference;
   }
 };
 
