@@ -12,7 +12,7 @@
 	}
 
 	$sql = "SELECT username, highest_score FROM users ORDER BY highest_score DESC limit 10";
-	$result = $conn->query($sql);
+	$result = $conn->query($sql) or die($conn->error);;
 
 	$dbdata = array();
 
