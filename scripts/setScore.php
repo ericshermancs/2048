@@ -4,6 +4,9 @@
 	$password = "password";
 	$dbname = "DB2048";
 
+	$username = $_POST["username"];
+	$highest_score = $_POST["highest_score"];
+
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
 	// Check connection
@@ -11,15 +14,13 @@
 	    die("Connection failed: " . $conn->connect_error);
 	}
 
-	$sql = "SELECT username, highest_score FROM users ORDER BY highest_score DESC limit 10";
-	$result = $conn->query($sql) or die($conn->error);
+	$sql = "UPDATE users SET highest_score=".$highest_score." WHERE username=".$username;
 
-	$dbdata = array();
-
-    while ( $row = $result->fetch_assoc())  {
-		$dbdata[]=$row;
+	if ($conn->query($sql) === TRUE) {
+	    echo true;
+	} else {
+	    echo false;
 	}
 
-	//Print array in JSON format
-	echo json_encode($dbdata);
+	$conn->close();
 ?>

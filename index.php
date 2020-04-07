@@ -23,11 +23,11 @@
       <div class="scores-container">
         <div class="score-container">0</div>
         <div class="best-container">0</div>
+        <div class="highscores-container"></div> 
       </div>
     </div>
 
     <div class="above-game">
-      <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
       <a class="restart-button">New Game</a>
     </div>
 
@@ -94,6 +94,18 @@
   <script src="js/tile.js"></script>
   <script src="js/local_storage_manager.js"></script>
   <script src="js/game_manager.js"></script>
-  <script src="js/application.js"></script>
+  <?php 
+    $_SESSION["username"] = "esazs";
+    $username = $_SESSION["username"];
+  ?>
+  <!-- Wait till the browser is ready to render the game (avoids glitches)-->
+  <script type="text/javascript">
+    let username="<?php echo $username;?>";
+    window.requestAnimationFrame(function () {
+      new GameManager(5, KeyboardInputManager, HTMLActuator, LocalStorageManager, username);
+    });
+  </script>
+
+  <!--<script src="js/application.js"></script> -->
 </body>
 </html>

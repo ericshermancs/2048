@@ -48,6 +48,28 @@ LocalStorageManager.prototype.setBestScore = function (score) {
   this.storage.setItem(this.bestScoreKey, score);
 };
 
+// Best score getters/setters
+LocalStorageManager.prototype.getBestRemoteScore = function () {
+  return this.storage.getItem(this.bestScoreKey) || 0;
+};
+
+LocalStorageManager.prototype.setBestRemoteScore = function (score, username) {
+  var http = new XMLHttpRequest();
+  var url = 'scripts/setScore.php';
+  var params = 'highest_score='+score+'&username='+username;
+  http.open('POST', url, true);
+
+  //Send the proper header information along with the request
+  http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+  http.onreadystatechange = function() {//Call a function when the state changes.
+      if(http.readyState == 4 && http.status == 200) {
+          console.log("set");
+      }
+  }
+  http.send(params);
+};
+
 // Game state getters/setters and clearing
 LocalStorageManager.prototype.getGameState = function () {
   var stateJSON = this.storage.getItem(this.gameStateKey);
