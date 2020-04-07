@@ -14,7 +14,7 @@
 	    die("Connection failed: " . $conn->connect_error);
 	}
 
-	$sql = "UPDATE users SET highest_score=".$highest_score." WHERE username=".$username;
+	$sql = "UPDATE users SET highest_score=".$highest_score." WHERE username='".$username."'";
 
 	if ($conn->query($sql) === TRUE) {
 	    echo true;
