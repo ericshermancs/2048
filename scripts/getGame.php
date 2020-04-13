@@ -16,6 +16,6 @@
 	$sql = "SELECT current_game FROM users WHERE username='".$username."'";
 	$result = $conn->query($sql) or die($conn->error);
 
-	$row = $result.fetch_row();
+	$row = $result->fetch_row();
 	echo $row;
 ?>
