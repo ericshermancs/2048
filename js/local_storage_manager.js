@@ -122,5 +122,5 @@ LocalStorageManager.prototype.setRemoteGameState = function (gameState) {
 
 LocalStorageManager.prototype.clearGameState = function () {
   this.storage.removeItem(this.gameStateKey);
-  this.setRemoteGameState('NULL');
+  this.setRemoteGameState({});
 };
