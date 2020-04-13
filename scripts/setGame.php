@@ -15,7 +15,7 @@
 	$username = $_POST["username"];
 	$gamestate = $_POST["gamestate"];
 
-	$sql = "UPDATE users SET current_game=".$gamestate." WHERE username='".$username."'";
+	$sql = "UPDATE users SET current_game='".$gamestate."' WHERE username='".$username."'";
 
 	if ($conn->query($sql) === TRUE) {
 	    echo true;
