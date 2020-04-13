@@ -105,7 +105,7 @@ LocalStorageManager.prototype.setGameState = function (gameState) {
 LocalStorageManager.prototype.setRemoteGameState = function (gameState) {
   var http = new XMLHttpRequest();
   var url = 'scripts/setGame.php';
-  var params = 'username='+username+"gamestate="+JSON.stringify(gameState);
+  var params = 'username='+username+"&gamestate="+JSON.stringify(gameState);
   http.open('POST', url, true);
 
   //Send the proper header information along with the request
