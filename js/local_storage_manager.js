@@ -102,19 +102,21 @@ LocalStorageManager.prototype.setGameState = function (gameState) {
   this.storage.setItem(this.gameStateKey, JSON.stringify(gameState));
 };
 
-LocalStorageManager.prototype.setRemoteGameState = function (gameState) {
+LocalStorageManager.prototype.setRemoteGameState = function (gameState, async=true) {
   var http = new XMLHttpRequest();
   var url = 'scripts/setGame.php';
   var params = 'username='+username+"&gamestate="+JSON.stringify(gameState);
-  http.open('POST', url, true);
+  
+  http.open('POST', url, async);
 
   //Send the proper header information along with the request
   http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-  http.onreadystatechange = function() {//Call a function when the state changes.
-      if(http.readyState == 4 && http.status == 200) {
-          console.log("set game");
-      }
+  if(async){
+    http.onreadystatechange = function() {//Call a function when the state changes.
+        if(http.readyState == 4 && http.status == 200) {
+            console.log("set game");
+        }
+    }
   }
   http.send(params);
 };
@@ -122,5 +124,5 @@ LocalStorageManager.prototype.setRemoteGameState = function (gameState) {
 
 LocalStorageManager.prototype.clearGameState = function () {
   this.storage.removeItem(this.gameStateKey);
-  this.setRemoteGameState({});
+  this.setRemoteGameState({}, false);
 };
