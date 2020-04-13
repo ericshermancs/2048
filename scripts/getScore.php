@@ -4,7 +4,6 @@
 	$password = "password";
 	$dbname = "DB2048";
 
-
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
 	// Check connection
@@ -13,15 +12,10 @@
 	}
 
 	$username = $_POST["username"];
-	$highest_score = $_POST["highest_score"];
 	
-	$sql = "UPDATE users SET highest_score=".$highest_score." WHERE username='".$username."'";
+	$sql = "SELECT highest_score FROM users WHERE username='".$username."'";
+	$result = $conn->query($sql) or die($conn->error);
 
-	if ($conn->query($sql) === TRUE) {
-	    echo true;
-	} else {
-	    echo false;
-	}
-
-	$conn->close();
+	$row = mysql_fetch_row($result);
+	echo $row[0];
 ?>

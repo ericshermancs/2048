@@ -33,7 +33,7 @@ GameManager.prototype.isGameTerminated = function () {
 
 // Set up the game
 GameManager.prototype.setup = function () {
-  var previousState = this.storageManager.getGameState();
+  var previousState = this.storageManager.getRemoteGameState();
 
   // Reload the game from a previous game if present
   if (previousState) {
@@ -104,6 +104,7 @@ GameManager.prototype.actuate = function () {
     this.storageManager.clearGameState();
   } else {
     this.storageManager.setGameState(this.serialize());
+    this.storageManager.setRemoteGameState(this.serialize());
   }
 
   this.actuator.actuate(this.grid, {

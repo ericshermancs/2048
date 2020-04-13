@@ -13,9 +13,9 @@
 	}
 
 	$username = $_POST["username"];
-	$highest_score = $_POST["highest_score"];
-	
-	$sql = "UPDATE users SET highest_score=".$highest_score." WHERE username='".$username."'";
+	$gamestate = $_POST["gamestate"];
+
+	$sql = "UPDATE users SET current_game=".$gamestate." WHERE username='".$username."'";
 
 	if ($conn->query($sql) === TRUE) {
 	    echo true;
@@ -24,4 +24,6 @@
 	}
 
 	$conn->close();
+
+
 ?>
