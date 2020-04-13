@@ -36,7 +36,7 @@ GameManager.prototype.setup = function () {
   var previousState = this.storageManager.getRemoteGameState();
 
   // Reload the game from a previous game if present
-  if (previousState) {
+  if (JSON.stringify(previousState)!=JSON.stringify({})) {
     this.grid        = new Grid(previousState.grid.size,
                                 previousState.grid.cells); // Reload grid
     this.score       = previousState.score;
