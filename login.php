@@ -10,9 +10,12 @@
       
       //echo $myusername." ".$mypassword." ".$_POST['username']." ".$_POST['password']."<br>";
 
-      $sql = "SELECT * FROM users WHERE username = '".$myusername."'";
-      if($_POST['login']=='login'){
-         $sql = $sql." and password = '".$mypassword."'";
+      
+      if($_POST['login']==' Login '){
+         $sql = "SELECT * FROM users WHERE username = '".$myusername."' and password = '".$mypassword."'";
+      }
+      else if($_POST['login'] == ' Register '){
+         $sql = "SELECT * FROM users WHERE username = '".$myusername."'";
       }
       echo $sql;
       $result = mysqli_query($conn,$sql);
@@ -23,15 +26,20 @@
       
       // If result matched $myusername and $mypassword, table row must be 1 row
       if($count == 1){
-         $_SESSION['username'] = $myusername;
-         
-         header("location: index.php");
+         if($_POST['login']==' Register '){
+            $error = "It appears that username is already taken";
+         }
+         else if($_POST['login']==' Login '){
+            $_SESSION['username'] = $myusername;
+            header("location: index.php");
+         }
       }
       else {
-         if($_POST['login']=='login')
+         if($_POST['login']==' Login ')
             $error = "Your Login Name or Password is invalid";
-         else if($_POST['login']=='register')
-            $error = "It appears that username is already taken";
+         else if($_POST['login']==' Register '){
+            $sql = "INSERT INTO users(username,password) VALUES('".$myusername."','".$mypassword."');";
+         }
       }
    }
 ?>
@@ -71,7 +79,7 @@
                   <label>UserName  :</label><input type = "text" name = "username" class = "box"/><br /><br />
                   <label>Password  :</label><input type = "password" name = "password" class = "box" /><br/><br />
                   <input type = "submit" name="login" value = " Login "/>
-                  <input tyoe = "submit" name="login" value = " Register ">
+                  <input type = "submit" name="login" value = " Register ">
                   <br />
                </form>
                
