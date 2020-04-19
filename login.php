@@ -1,6 +1,7 @@
 <?php
    if(isset($_SESSION['username'])){
       header("location:index.php");
+      die();
    }
 
    include("scripts/config.php");
