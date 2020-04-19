@@ -36,6 +36,10 @@
         <div class="highscores-container"></div> 
       </div>
     </div>
+    <div>
+      Signed in as: <?php echo $_SESSION['username']; ?>
+      <a href="logout.php">Sign out</a>
+    </div>
 
     <div class="above-game">
       <a class="restart-button">New Game</a>

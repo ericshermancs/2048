@@ -1,4 +1,8 @@
 <?php
+   if(isset($_SESSION['username'])){
+      header("location:index.php");
+   }
+
    include("scripts/config.php");
    session_start();
    
