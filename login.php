@@ -5,10 +5,10 @@
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form 
       
-      $myusername = mysqli_real_escape_string($db, $_POST['username']);
-      $mypassword = mysqli_real_escape_string($db, $_POST['password']); 
+      $myusername = filter_var($_POST['username'], FILTER_SANITIZE_STRING);  
+      $mypassword = filter_var($_POST['password'], FILTER_SANITIZE_STRING);  
       
-      echo $myusername." ".$mypassword." ".$_POST['username']." ".$_POST['password']."<br>";
+      //echo $myusername." ".$mypassword." ".$_POST['username']." ".$_POST['password']."<br>";
 
       $sql = "SELECT * FROM users WHERE username = '".$myusername."' and password = '".$mypassword."'";
       echo $sql;
