@@ -38,7 +38,7 @@
     </div>
     <div>
       Signed in as: <?php echo $_SESSION['username']; ?>
-      <a href="logout.php">Sign out</a>
+      <button onclick="logout()">Sign out</button>
     </div>
 
     <div class="above-game">
@@ -108,6 +108,13 @@
   <script src="js/tile.js"></script>
   <script src="js/local_storage_manager.js"></script>
   <script src="js/game_manager.js"></script>
+  <script type="text/javascript">
+    function logout(){
+      // remove traces of past user, go logout please
+      localStorage.clear();
+      window.location.replace("logout.php");
+    }
+  </script>
   <?php 
     //$_SESSION["username"] = "esazs";
     $username = $_SESSION["username"];
