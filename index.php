@@ -1,8 +1,18 @@
+<?php
+  session_start();
+  if(!isset($_SESSION['username'])){
+    header("location:login.php");
+    die();
+  }
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
-  <title>2x48</title>
+  <title>2x4=8</title>
 
   <link href="style/main.css" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="favicon.ico">
@@ -19,7 +29,7 @@
 <body>
   <div class="container">
     <div class="heading">
-      <h1 class="title">2x48</h1>
+      <h1 class="title">2x4=8</h1>
       <div class="scores-container">
         <div class="score-container">0</div>
         <div class="best-container">0</div>
@@ -95,7 +105,7 @@
   <script src="js/local_storage_manager.js"></script>
   <script src="js/game_manager.js"></script>
   <?php 
-    $_SESSION["username"] = "esazs";
+    //$_SESSION["username"] = "esazs";
     $username = $_SESSION["username"];
   ?>
   <!-- Wait till the browser is ready to render the game (avoids glitches)-->

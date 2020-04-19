@@ -70,7 +70,7 @@ HTMLActuator.prototype.addTile = function (tile) {
   else if(tile.op=='/')
     content = '÷'+tile.value
   else if (tile.op=='0')
-    content = '<img src="https://image.flaticon.com/icons/svg/486/486828.svg">'
+    content = '<img src="/2048/images/bomb.svg">'
   else{
     console.log(tile);
   }
