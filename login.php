@@ -8,6 +8,8 @@
       $myusername = mysqli_real_escape_string($db, $_POST['username']);
       $mypassword = mysqli_real_escape_string($db, $_POST['password']); 
       
+      echo $myusername." ".$mypassword." ".$_POST['username']." ".$_POST['password']."<br>";
+
       $sql = "SELECT * FROM users WHERE username = '".$myusername."' and password = '".$mypassword."'";
       echo $sql;
       $result = mysqli_query($db,$sql);
