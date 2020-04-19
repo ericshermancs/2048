@@ -95,7 +95,7 @@ LocalStorageManager.prototype.getRemoteGameState = function() {
   http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
   http.send(params);
 
-  return http.responseText!='NULL' ? JSON.parse(http.responseText) : this.getGameState();
+  return http.responseText!='{}' ? JSON.parse(http.responseText) : this.getGameState();
 }
 
 LocalStorageManager.prototype.setGameState = function (gameState) {

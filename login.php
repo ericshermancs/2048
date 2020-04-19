@@ -39,6 +39,7 @@
             $error = "Your Login Name or Password is invalid";
          else if($_POST['login']==' Register '){
             $sql = "INSERT INTO users(username,password) VALUES('".$myusername."','".$mypassword."');";
+            $result = mysqli_query($conn,$sql);
             $_SESSION['username'] = $myusername;
             header("location: index.php");
          }
