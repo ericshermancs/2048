@@ -10,7 +10,10 @@
       
       //echo $myusername." ".$mypassword." ".$_POST['username']." ".$_POST['password']."<br>";
 
-      $sql = "SELECT * FROM users WHERE username = '".$myusername."' and password = '".$mypassword."'";
+      $sql = "SELECT * FROM users WHERE username = '".$myusername."'";
+      if($_POST['login']=='login'){
+         $sql = $sql." and password = '".$mypassword."'";
+      }
       echo $sql;
       $result = mysqli_query($conn,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
@@ -19,13 +22,16 @@
       $count = mysqli_num_rows($result);
       
       // If result matched $myusername and $mypassword, table row must be 1 row
-      echo $count;
-      if($count == 1) {
+      if($count == 1){
          $_SESSION['username'] = $myusername;
          
          header("location: index.php");
-      }else {
-         $error = "Your Login Name or Password is invalid";
+      }
+      else {
+         if($_POST['login']=='login')
+            $error = "Your Login Name or Password is invalid";
+         else if($_POST['login']=='register')
+            $error = "It appears that username is already taken";
       }
    }
 ?>
@@ -64,7 +70,9 @@
                <form action = "" method = "post">
                   <label>UserName  :</label><input type = "text" name = "username" class = "box"/><br /><br />
                   <label>Password  :</label><input type = "password" name = "password" class = "box" /><br/><br />
-                  <input type = "submit" value = " Submit "/><br />
+                  <input type = "submit" name="login" value = " Login "/>
+                  <input tyoe = "submit" name="login" value = " Register ">
+                  <br />
                </form>
                
                <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>
