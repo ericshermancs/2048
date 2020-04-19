@@ -17,7 +17,7 @@
       else if($_POST['login'] == ' Register '){
          $sql = "SELECT * FROM users WHERE username = '".$myusername."'";
       }
-      echo $sql;
+      // echo $sql;
       $result = mysqli_query($conn,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       
@@ -39,6 +39,8 @@
             $error = "Your Login Name or Password is invalid";
          else if($_POST['login']==' Register '){
             $sql = "INSERT INTO users(username,password) VALUES('".$myusername."','".$mypassword."');";
+            $_SESSION['username'] = $myusername;
+            header("location: index.php");
          }
       }
    }
