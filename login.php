@@ -16,7 +16,7 @@
       $count = mysqli_num_rows($result);
       
       // If result matched $myusername and $mypassword, table row must be 1 row
-      
+      echo $count;
       if($count == 1) {
          $_SESSION['username'] = $myusername;
          
