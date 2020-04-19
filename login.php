@@ -9,6 +9,7 @@
       $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
       
       $sql = "SELECT * FROM users WHERE username = '".$myusername."' and password = '".$mypassword."'";
+      echo $sql;
       $result = mysqli_query($db,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       
