@@ -1,11 +1,12 @@
 <?php
+   session_start();
+   
    if(isset($_SESSION['username'])){
-      header("location: index.php");
+      header("location:index.php");
       die();
    }
 
    include("scripts/config.php");
-   session_start();
    
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form 
