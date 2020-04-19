@@ -38,7 +38,7 @@
     </div>
     <div>
       Signed in as: <?php echo $_SESSION['username']; ?>
-      <button onclick="logout()">Sign out</button>
+      <a onclick="logout()">Sign out</a>
     </div>
 
     <div class="above-game">
