@@ -82,7 +82,7 @@ LocalStorageManager.prototype.setBestRemoteScore = function (score, username) {
 // Game state getters/setters and clearing
 LocalStorageManager.prototype.getGameState = function () {
   var stateJSON = this.storage.getItem(this.gameStateKey);
-  return stateJSON ? JSON.parse(stateJSON) : null;
+  return stateJSON ? JSON.parse(stateJSON) : {};
 };
 
 LocalStorageManager.prototype.getRemoteGameState = function() {
@@ -95,7 +95,7 @@ LocalStorageManager.prototype.getRemoteGameState = function() {
   http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
   http.send(params);
 
-  return http.responseText!='{}' ? JSON.parse(http.responseText) : this.getGameState();
+  return JSON.parse(http.responseText);
 }
 
 LocalStorageManager.prototype.setGameState = function (gameState) {
