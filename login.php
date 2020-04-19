@@ -12,7 +12,7 @@
 
       $sql = "SELECT * FROM users WHERE username = '".$myusername."' and password = '".$mypassword."'";
       echo $sql;
-      $result = mysqli_query($db,$sql);
+      $result = mysqli_query($conn,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       
       
