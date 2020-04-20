@@ -134,7 +134,7 @@ GameManager.prototype.refreshHighScoreList = function() {
           menu.appendChild(table);
       }
   }
-  http.send(params);
+  http.send();
 
   
 }
