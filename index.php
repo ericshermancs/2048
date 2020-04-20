@@ -96,10 +96,12 @@
 
       </div>
 
-      <div class="highscores-container">
-      	<h2 class="title">High Scores</h2>
-      </div>
     </div>
+    <div class="below-game">
+		<div class="highscores-container">
+			<h2 class="title">High Scores</h2>
+		</div>
+	</div>
 
   </div>
 
