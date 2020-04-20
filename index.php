@@ -33,7 +33,7 @@
       <div class="scores-container">
         <div class="score-container">0</div>
         <div class="best-container">0</div>
-        <div class="highscores-container"></div> 
+        
       </div>
     </div>
     <div>
@@ -94,6 +94,10 @@
 
       <div class="tile-container">
 
+      </div>
+
+      <div class="highscores-container">
+      	<h2 class="title">High Scores</h2>
       </div>
     </div>
 

@@ -11,7 +11,7 @@
 	    die("Connection failed: " . $conn->connect_error);
 	}
 
-	$sql = "SELECT username, highest_score FROM users ORDER BY highest_score DESC limit 10";
+	$sql = "SELECT username, highest_score FROM users WHERE highest_score IS NOT NULL ORDER BY highest_score DESC limit 10";
 	$result = $conn->query($sql) or die($conn->error);
 
 	$dbdata = array();
