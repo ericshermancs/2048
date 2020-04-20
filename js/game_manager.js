@@ -111,6 +111,28 @@ GameManager.prototype.refreshHighScoreList = function() {
               menu.removeChild(menu.firstChild);
           }
           var table = document.createElement('table');
+
+
+          var tr = document.createElement('tr');   
+
+          var td1 = document.createElement('td');
+          var td2 = document.createElement('td');
+          var td3 = document.createElement('td');
+
+          var text1 = document.createTextNode("Rank");
+          var text2 = document.createTextNode("Username");
+          var text3 = document.createTextNode("Score");
+
+          td1.appendChild(text1);
+          td2.appendChild(text2);
+          td3.appendChild(text3);
+          tr.appendChild(td1);
+          tr.appendChild(td2);
+          tr.appendChild(td3);
+
+          table.appendChild(tr);
+
+
           for (var i = 0; i < data.length; i++){
               var tr = document.createElement('tr');   
 
