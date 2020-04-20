@@ -92,12 +92,61 @@ GameManager.prototype.addRandomTile = function () {
   }
 };
 
+GameManager.prototype.refreshHighScoreList = function() {
+
+
+
+  var http = new XMLHttpRequest();
+  var url = 'scripts/getHighScoreList.php';
+  http.open('GET', url, true);
+
+  //Send the proper header information along with the request
+  http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+  http.onreadystatechange = function() {//Call a function when the state changes.
+      if(http.readyState == 4 && http.status == 200) {
+          let data = JSON.parse(http.responseText);
+          let menu = document.getElementById('highscores-list');
+          while (menu.firstChild) {
+              menu.removeChild(menu.firstChild);
+          }
+          var table = document.createElement('table');
+          for (var i = 0; i < data.length; i++){
+              var tr = document.createElement('tr');   
+
+              var td1 = document.createElement('td');
+              var td2 = document.createElement('td');
+              var td3 = document.createElement('td');
+
+              var text1 = document.createTextNode(i+1);
+              var text2 = document.createTextNode(data[i][0]);
+              var text3 = document.createTextNode(data[i][1]);
+
+              td1.appendChild(text1);
+              td2.appendChild(text2);
+              td3.appendChild(text3);
+              tr.appendChild(td1);
+              tr.appendChild(td2);
+              tr.appendChild(td3);
+
+              table.appendChild(tr);
+          }
+          menu.appendChild(table);
+      }
+  }
+  http.send(params);
+
+  
+}
+
 // Sends the updated grid to the actuator
 GameManager.prototype.actuate = function () {
   if (this.storageManager.getBestScore() < this.score) {
     this.storageManager.setBestScore(this.score);
     this.storageManager.setBestRemoteScore(this.score, this.username);
   }
+
+  refreshHighScoreList()
 
   // Clear the state when the game is over (game over only, not win)
   if (this.over) {
