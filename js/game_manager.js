@@ -119,8 +119,8 @@ GameManager.prototype.refreshHighScoreList = function() {
               var td3 = document.createElement('td');
 
               var text1 = document.createTextNode(i+1);
-              var text2 = document.createTextNode(data[i][0]);
-              var text3 = document.createTextNode(data[i][1]);
+              var text2 = document.createTextNode(data[i]['username']);
+              var text3 = document.createTextNode(data[i]['highest_score']);
 
               td1.appendChild(text1);
               td2.appendChild(text2);
