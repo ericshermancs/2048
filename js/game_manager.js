@@ -146,7 +146,7 @@ GameManager.prototype.actuate = function () {
     this.storageManager.setBestRemoteScore(this.score, this.username);
   }
 
-  refreshHighScoreList()
+  this.refreshHighScoreList()
 
   // Clear the state when the game is over (game over only, not win)
   if (this.over) {
