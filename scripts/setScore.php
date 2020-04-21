@@ -12,7 +12,7 @@
 	    die("Connection failed: " . $conn->connect_error);
 	}
 
-	$username = $_POST["username"];
+	$username = $_SESSION["username"];
 	$highest_score = $_POST["highest_score"];
 	
 	$sql = "UPDATE users SET highest_score=".$highest_score." WHERE username='".$username."'";

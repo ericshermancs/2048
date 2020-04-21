@@ -52,20 +52,19 @@ LocalStorageManager.prototype.setBestScore = function (score) {
 LocalStorageManager.prototype.getBestRemoteScore = function () {
   var http = new XMLHttpRequest();
   var url = 'scripts/getScore.php';
-  var params = 'username='+username;
-  http.open('POST', url, false);
+  http.open('GET', url, false);
 
   //Send the proper header information along with the request
   http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-  http.send(params);
+  http.send();
 
   return this.storage.getItem(parseInt(http.responseText)) || 0;
 };
 
-LocalStorageManager.prototype.setBestRemoteScore = function (score, username) {
+LocalStorageManager.prototype.setBestRemoteScore = function (score) {
   var http = new XMLHttpRequest();
   var url = 'scripts/setScore.php';
-  var params = 'highest_score='+score+'&username='+username;
+  var params = 'highest_score='+score
   http.open('POST', url, true);
 
   //Send the proper header information along with the request
@@ -88,12 +87,11 @@ LocalStorageManager.prototype.getGameState = function () {
 LocalStorageManager.prototype.getRemoteGameState = function() {
   var http = new XMLHttpRequest();
   var url = 'scripts/getGame.php';
-  var params = 'username='+username;
-  http.open('POST', url, false);
+  http.open('GET', url, false);
 
   //Send the proper header information along with the request
   http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-  http.send(params);
+  http.send();
 
   return JSON.parse(http.responseText);
 }
@@ -105,7 +103,7 @@ LocalStorageManager.prototype.setGameState = function (gameState) {
 LocalStorageManager.prototype.setRemoteGameState = function (gameState, async=true) {
   var http = new XMLHttpRequest();
   var url = 'scripts/setGame.php';
-  var params = 'username='+username+"&gamestate="+JSON.stringify(gameState);
+  var params = "gamestate="+JSON.stringify(gameState);
   
   http.open('POST', url, async);
 

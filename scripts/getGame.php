@@ -11,7 +11,7 @@
 	    die("Connection failed: " . $conn->connect_error);
 	}
 
-	$username = $_POST["username"];
+	$username = $_SESSION["username"];
 	
 	$sql = "SELECT current_game FROM users WHERE username='".$username."'";
 	$result = $conn->query($sql) or die($conn->error);

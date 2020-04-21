@@ -124,15 +124,10 @@
       window.location.replace("logout.php");
     }
   </script>
-  <?php 
-    //$_SESSION["username"] = "esazs";
-    $username = $_SESSION["username"];
-  ?>
   <!-- Wait till the browser is ready to render the game (avoids glitches)-->
   <script type="text/javascript">
-    let username="<?php echo $username;?>";
     window.requestAnimationFrame(function () {
-      new GameManager(5, KeyboardInputManager, HTMLActuator, LocalStorageManager, username);
+      new GameManager(5, KeyboardInputManager, HTMLActuator, LocalStorageManager);
     });
   </script>
 

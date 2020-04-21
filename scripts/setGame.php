@@ -12,7 +12,7 @@
 	    die("Connection failed: " . $conn->connect_error);
 	}
 
-	$username = $_POST["username"];
+	$username = $_SESSION["username"];
 	$gamestate = $_POST["gamestate"];
 
 	$sql = "UPDATE users SET current_game='".$gamestate."' WHERE username='".$username."'";

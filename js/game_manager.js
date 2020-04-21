@@ -1,4 +1,4 @@
-function GameManager(size, InputManager, Actuator, StorageManager, username) {
+function GameManager(size, InputManager, Actuator, StorageManager) {
   this.size           = size; // Size of the grid
   this.inputManager   = new InputManager;
   this.storageManager = new StorageManager;
@@ -9,7 +9,6 @@ function GameManager(size, InputManager, Actuator, StorageManager, username) {
   this.inputManager.on("move", this.move.bind(this));
   this.inputManager.on("restart", this.restart.bind(this));
   this.inputManager.on("keepPlaying", this.keepPlaying.bind(this));
-  this.username = username;
   this.setup();
 }
 
@@ -165,7 +164,7 @@ GameManager.prototype.refreshHighScoreList = function() {
 GameManager.prototype.actuate = function () {
   if (this.storageManager.getBestScore() < this.score) {
     this.storageManager.setBestScore(this.score);
-    this.storageManager.setBestRemoteScore(this.score, this.username);
+    this.storageManager.setBestRemoteScore(this.score);
   }
 
   this.refreshHighScoreList()
