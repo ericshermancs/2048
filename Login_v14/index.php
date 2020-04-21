@@ -91,7 +91,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-				<form class="login100-form validate-form flex-sb flex-w" action="/2048/login.php" method="POST">
+				<form class="login100-form validate-form flex-sb flex-w" action="." method="POST">
 					<span class="login100-form-title p-b-32">
 						2x4=8
 					</span>
