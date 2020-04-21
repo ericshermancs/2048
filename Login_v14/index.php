@@ -6,7 +6,11 @@
       die();
    }
 
-   include("/2048/scripts/config.php");
+   $_SERVER['DOCUMENT_ROOT'];
+
+   $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "/2048/scripts/config.php";
+   include_once($path);
    
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form 
