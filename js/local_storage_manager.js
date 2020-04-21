@@ -58,7 +58,7 @@ LocalStorageManager.prototype.getBestRemoteScore = function () {
   http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
   http.send();
 
-  return this.storage.getItem(parseInt(http.responseText)) || 0;
+  return parseInt(http.responseText);
 };
 
 LocalStorageManager.prototype.setBestRemoteScore = function (score) {

@@ -163,6 +163,7 @@ GameManager.prototype.refreshHighScoreList = function() {
 
 // Sends the updated grid to the actuator
 GameManager.prototype.actuate = function () {
+  console.log(this.storageManager.getBestScore()+","+this.score)
   if (this.storageManager.getBestScore() < this.score) {
     this.storageManager.setBestScore(this.score);
     this.storageManager.setBestRemoteScore(this.score);
