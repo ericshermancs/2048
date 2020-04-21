@@ -52,7 +52,8 @@ GameManager.prototype.setup = function () {
     // Add the initial tiles
     this.addStartTiles();
   }
-
+  let bestScore = this.storageManager.getBestRemoteScore();
+  this.storageManager.setBestScore(bestScore)
   // Update the actuator
   this.actuate();
 };
