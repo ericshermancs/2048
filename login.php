@@ -52,10 +52,9 @@
       }
    }
 
-   include "./Login_v14/index.html"
 ?>
 
-
+<iframe src="./Login_v14/index.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
 
 <!--
 <html>
