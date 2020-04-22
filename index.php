@@ -15,6 +15,7 @@
   <title>2x4=8</title>
 
   <link href="style/main.css" rel="stylesheet" type="text/css">
+  <link href="style/modal.css" rel="stylesheet" type="text/css" href="">
   <link rel="shortcut icon" href="favicon.ico">
   <link rel="apple-touch-icon" href="meta/apple-touch-icon.png">
   <link rel="apple-touch-startup-image" href="meta/apple-touch-startup-image-640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"> <!-- iPhone 5+ -->
@@ -43,7 +44,7 @@
       Signed in as: <?php echo $_SESSION['username']; ?>
       <a onclick="logout()">Sign out</a>
     </div>
-
+    <button id="myBtn">How To Play</button>
     <div class="above-game">
       <a class="restart-button">New Game</a>
     </div>
@@ -111,6 +112,50 @@
 
   </div>
 
+  <!--
+  above ends original game
+  -->
+  <!-- Trigger/Open The Modal -->
+  
+
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h1>How To Play:</h1>
+      <ul>
+        <li>Use the arrow keys (Up, Down, Left, Right)
+        to move all the blocks in a certain direction</li>
+        <li>A new block will spawn in a random available spot each turn</li>
+        <li>In this game there are 2 types of blocks:
+            <ul>
+                <li>Regular number blocks</li>
+                <li>Special operation blocks (&times;, &div;, and 💣)</li> 
+            </ul>
+        <li>Number blocks with the same number can be merged to form blocks with larger numbers</li>
+        <li>Special operation blocks have the following behaviors:</li>
+        <ul>
+            <li>&times; blocks will merge with each other to form a new larger multiplication block (for example, &times;2 merged with &times;4 will result in a new &times;8 block) and the same holds true for &div; blocks</li>
+            <li>&times; blocks and &div; blocks with equal numbers will cancel each other out and delete both blocks</li>
+            <li>&times; blocks and &div; blocks can reduce each other (for example, &times;4 merged with &div;2 will result in &times;2, and &div;4 merged with &times;2 will result in &div;2 )
+            <li>&div; blocks cannot merge with regular number blocks of the same numerical value (&div;2 cannot merge with 2)</li>
+            <li>💣 blocks can merge with any block of any type or value and both blocks will be deleted </li>
+        </ul>
+        <li>Blocks can only be merged once per move, use this to your advantage to manipulate unwanted blocks around the grid</li>
+        <li>Your score is equal to the sum of all regular number blocks on the grid</li>
+      </ul>
+      <h2>Tips:</h2>
+      <ul>
+        <li>Merging a &div; block with a regular number will mean that your score will decrease by at least half the original number block's value. Merging with higher numbers will result in a larger hit to your score, so try to merge with the smallest regular block you can, or use the 💣 block to eliminate them</li>
+          <li>Conversely, merging a &times; block with a regular number block will mean your score will increase by at least double the original number block's value. Merger with higher numbers will result in a larger boost to your score. Try to avoid using 💣 to eliminate them</li>
+      </ul>
+    </div>
+
+  </div>
+
+
   <script src="js/bind_polyfill.js"></script>
   <script src="js/classlist_polyfill.js"></script>
   <script src="js/animframe_polyfill.js"></script>
@@ -120,6 +165,7 @@
   <script src="js/tile.js"></script>
   <script src="js/local_storage_manager.js"></script>
   <script src="js/game_manager.js"></script>
+  <script src="js/modal.js"></script>
   <script type="text/javascript">
     function logout(){
       // remove traces of past user, go logout please
