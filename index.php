@@ -26,6 +26,9 @@
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
 </head>
+<script type="text/javascript">
+  this.top.location !== this.location && (this.top.location = this.location);
+</script>
 <body>
   <div class="container">
     <div class="heading">
