@@ -1,0 +1,12 @@
+Eric Sherman
+Project 1
+
+How to run the game:
+
+Visit the following URL: http://67.205.173.41/2048
+
+You will be redirected to a login page
+To make a new account, enter the username and password you wish to have and click "Register"
+To log into an already existing account, enter username and password and click "Login"
+You will be redirected to the game page.
+The page will contains instructions to play the game (instructions are also available on the login page)

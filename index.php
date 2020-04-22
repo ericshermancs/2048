@@ -44,7 +44,7 @@
       Signed in as: <?php echo $_SESSION['username']; ?>
       <a onclick="logout()">Sign out</a>
     </div>
-    <button id="myBtn">How To Play</button>
+    <a id="myBtn">How To Play</a>
     <div class="above-game">
       <a class="restart-button">New Game</a>
     </div>
