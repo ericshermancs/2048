@@ -138,9 +138,9 @@
         <li>Special operation blocks have the following behaviors:</li>
         <ul>
             <li>&times; blocks will merge with each other to form a new larger multiplication block (for example, &times;2 merged with &times;4 will result in a new &times;8 block) and the same holds true for &div; blocks</li>
+            <li>&times; blocks and &div; blocks can reduce each other (for example, &times;4 merged with &div;2 will result in &times;2, and &div;4 merged with &times;2 will result in &div;2 )</li>
             <li>&times; blocks and &div; blocks with equal numbers will cancel each other out and delete both blocks</li>
-            <li>&times; blocks and &div; blocks can reduce each other (for example, &times;4 merged with &div;2 will result in &times;2, and &div;4 merged with &times;2 will result in &div;2 )
-            <li>&div; blocks cannot merge with regular number blocks of the same numerical value (&div;2 cannot merge with 2)</li>
+            <li>&div; blocks cannot merge with regular number blocks of the same numerical value or lower (&div;4 cannot merge with 2 or 4)</li>
             <li>💣 blocks can merge with any block of any type or value and both blocks will be deleted </li>
         </ul>
         <li>Blocks can only be merged once per move, use this to your advantage to manipulate unwanted blocks around the grid</li>
