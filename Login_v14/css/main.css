@@ -34,10 +34,13 @@
 	box-sizing: border-box;
 }
 
-body, html {
-	height: 100%;
-	font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
-}
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #faf8ef;
+  color: #776E65;
+  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px; }
 
 /*---------------------------------------------*/
 a {
@@ -198,7 +201,6 @@ iframe {
   font-size: 30px;
   color: #555555;
   line-height: 1.2;
-  text-transform: uppercase;
   text-align: left;
 
   width: 100%;
