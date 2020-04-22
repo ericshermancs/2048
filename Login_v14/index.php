@@ -90,7 +90,7 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
-	<link href="style/modal.css" rel="stylesheet" type="text/css">
+	<link href="/style/modal.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	  <!-- The Modal -->
@@ -136,7 +136,7 @@
 					<span class="login100-form-title p-b-32">
 						2x4=8
 					</span>
-
+					<button id="myBtn">How To Play</button>
 					<span class="txt1 p-b-11">
 						Username
 					</span>
@@ -205,6 +205,7 @@
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
+	<script src="/js/modal.js">
 
 </body>
 </html>
