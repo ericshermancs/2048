@@ -93,40 +93,7 @@
 	<link href="/2048/style/modal.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	  <!-- The Modal -->
-  <div id="myModal" class="modal">
 
-    <!-- Modal content -->
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h1>How To Play:</h1>
-      <ul>
-        <li>Use the arrow keys (Up, Down, Left, Right)
-        to move all the blocks in a certain direction</li>
-        <li>A new block will spawn in a random available spot each turn</li>
-        <li>In this game there are 2 types of blocks:
-            <ul>
-                <li>Regular number blocks</li>
-                <li>Special operation blocks (&times;, &div;, and 💣)</li> 
-            </ul>
-        <li>Number blocks with the same number can be merged to form blocks with larger numbers</li>
-        <li>Special operation blocks have the following behaviors:</li>
-        <ul>
-            <li>&times; blocks will merge with each other to form a new larger multiplication block (for example, &times;2 merged with &times;4 will result in a new &times;8 block) and the same holds true for &div; blocks</li>
-            <li>&times; blocks and &div; blocks can reduce each other (for example, &times;4 merged with &div;2 will result in &times;2, and &div;4 merged with &times;2 will result in &div;2 )</li>
-            <li>&times; blocks and &div; blocks with equal numbers will cancel each other out and delete both blocks</li>
-            <li>&div; blocks cannot merge with regular number blocks of the same numerical value or lower (&div;4 cannot merge with 2 or 4)</li>
-            <li>💣 blocks can merge with any block of any type or value and both blocks will be deleted </li>
-        </ul>
-        <li>Blocks can only be merged once per move, use this to your advantage to manipulate unwanted blocks around the grid</li>
-        <li>Your score is equal to the sum of all regular number blocks on the grid</li>
-      </ul>
-      <h2>Tips:</h2>
-      <ul>
-        <li>Merging a &div; block with a regular number will mean that your score will decrease by at least half the original number block's value. Merging with higher numbers will result in a larger hit to your score, so try to merge with the smallest regular block you can, or use the 💣 block to eliminate them</li>
-          <li>Conversely, merging a &times; block with a regular number block will mean your score will increase by at least double the original number block's value. Merger with higher numbers will result in a larger boost to your score. Try to avoid using 💣 to eliminate them</li>
-      </ul>
-    </div>
 
   </div>
 	<div class="limiter">
@@ -186,6 +153,41 @@
 		</div>
 	</div>
 	
+	  <!-- The Modal -->
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h1>How To Play:</h1>
+      <ul>
+        <li>Use the arrow keys (Up, Down, Left, Right)
+        to move all the blocks in a certain direction</li>
+        <li>A new block will spawn in a random available spot each turn</li>
+        <li>In this game there are 2 types of blocks:
+            <ul>
+                <li>Regular number blocks</li>
+                <li>Special operation blocks (&times;, &div;, and 💣)</li> 
+            </ul>
+        <li>Number blocks with the same number can be merged to form blocks with larger numbers</li>
+        <li>Special operation blocks have the following behaviors:</li>
+        <ul>
+            <li>&times; blocks will merge with each other to form a new larger multiplication block (for example, &times;2 merged with &times;4 will result in a new &times;8 block) and the same holds true for &div; blocks</li>
+            <li>&times; blocks and &div; blocks can reduce each other (for example, &times;4 merged with &div;2 will result in &times;2, and &div;4 merged with &times;2 will result in &div;2 )</li>
+            <li>&times; blocks and &div; blocks with equal numbers will cancel each other out and delete both blocks</li>
+            <li>&div; blocks cannot merge with regular number blocks of the same numerical value or lower (&div;4 cannot merge with 2 or 4)</li>
+            <li>💣 blocks can merge with any block of any type or value and both blocks will be deleted </li>
+        </ul>
+        <li>Blocks can only be merged once per move, use this to your advantage to manipulate unwanted blocks around the grid</li>
+        <li>Your score is equal to the sum of all regular number blocks on the grid</li>
+      </ul>
+      <h2>Tips:</h2>
+      <ul>
+        <li>Merging a &div; block with a regular number will mean that your score will decrease by at least half the original number block's value. Merging with higher numbers will result in a larger hit to your score, so try to merge with the smallest regular block you can, or use the 💣 block to eliminate them</li>
+          <li>Conversely, merging a &times; block with a regular number block will mean your score will increase by at least double the original number block's value. Merger with higher numbers will result in a larger boost to your score. Try to avoid using 💣 to eliminate them</li>
+      </ul>
+    </div>
+
 
 	<div id="dropDownSelect1"></div>
 	
