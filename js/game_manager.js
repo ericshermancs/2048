@@ -93,7 +93,7 @@ GameManager.prototype.addRandomTile = function () {
 };
 
 
-GameManager.prototype.escapeHtml = function (unsafe) {
+function escapeHtml (unsafe) {
     return unsafe
          .replace(/&/g, "&amp;")
          .replace(/</g, "&lt;")
@@ -151,7 +151,7 @@ GameManager.prototype.refreshHighScoreList = function() {
               var td3 = document.createElement('td');
 
               var text1 = document.createTextNode(i+1);
-              var text2 = document.createTextNode(this.escapeHtml(data[i]['username']));
+              var text2 = document.createTextNode(escapeHtml(data[i]['username']));
               var text3 = document.createTextNode(data[i]['highest_score']);
 
               td1.appendChild(text1);
