@@ -95,7 +95,9 @@
 	<link href="/2048/style/modal.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-
+  <div class="heading">
+  	<h1 class="title">2x4=8</h1>
+  </div>
 
   </div>
 	<div class="limiter">
@@ -154,7 +156,12 @@
 			</div>
 		</div>
 	</div>
-	
+	<div class="highscores-container">
+		<h2 class="title">High Scores</h2>
+		<div id="highscores-list">
+			
+		</div>
+	</div>
 	  <!-- The Modal -->
   <div id="myModal" class="modal">
 
@@ -210,6 +217,68 @@
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
 	<script src="/2048/js/modal.js"></script>
+	<script type="text/javascript">
+		var http = new XMLHttpRequest();
+		var url = '/2048/scripts/getHighScoreList.php';
+		http.open('GET', url, true);
 
+		//Send the proper header information along with the request
+		http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+		http.onreadystatechange = function() {//Call a function when the state changes.
+		  if(http.readyState == 4 && http.status == 200) {
+		      let data = JSON.parse(http.responseText);
+		      let menu = document.getElementById('highscores-list');
+		      while (menu.firstChild) {
+		          menu.removeChild(menu.firstChild);
+		      }
+		      var table = document.createElement('table');
+
+
+		      var tr = document.createElement('tr');   
+
+		      var td1 = document.createElement('td');
+		      var td2 = document.createElement('td');
+		      var td3 = document.createElement('td');
+
+		      var text1 = document.createTextNode("Rank");
+		      var text2 = document.createTextNode("Username");
+		      var text3 = document.createTextNode("Score");
+
+		      td1.appendChild(text1);
+		      td2.appendChild(text2);
+		      td3.appendChild(text3);
+		      tr.appendChild(td1);
+		      tr.appendChild(td2);
+		      tr.appendChild(td3);
+
+		      table.appendChild(tr);
+
+
+		      for (var i = 0; i < data.length; i++){
+		          var tr = document.createElement('tr');   
+
+		          var td1 = document.createElement('td');
+		          var td2 = document.createElement('td');
+		          var td3 = document.createElement('td');
+
+		          var text1 = document.createTextNode(i+1);
+		          var text2 = document.createTextNode(data[i]['username']);
+		          var text3 = document.createTextNode(data[i]['highest_score']);
+
+		          td1.appendChild(text1);
+		          td2.appendChild(text2);
+		          td3.appendChild(text3);
+		          tr.appendChild(td1);
+		          tr.appendChild(td2);
+		          tr.appendChild(td3);
+
+		          table.appendChild(tr);
+		      }
+		      menu.appendChild(table);
+		  }
+		}
+		http.send();
+	</script>
 </body>
 </html>
