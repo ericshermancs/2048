@@ -95,9 +95,8 @@
 	<link href="/2048/style/modal.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-		<div class="heading">
-			<h1 class="title">2x4=8</h1>
-		</div>
+			<h1 class="title" style="text-align:center">2x4=8</h1>
+
 
 		<div class="limiter">
 			<div class="container-login100">
