@@ -25,7 +25,7 @@
 
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=yes, minimal-ui">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=.5, maximum-scale=1, minimum-scale=.25, user-scalable=yes, minimal-ui">
 </head>
 <script type="text/javascript">
   this.top.location !== this.location && (this.top.location = this.location);
