@@ -151,7 +151,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="highscores-container">
+		<div class="highscores-container" style="max-width: 500px; margin: auto;">
 			<h2 class="title">High Scores</h2>
 			<div id="highscores-list">
 				
