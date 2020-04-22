@@ -90,7 +90,7 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
-	<link href="/style/modal.css" rel="stylesheet" type="text/css">
+	<link href="/2048/style/modal.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	  <!-- The Modal -->
@@ -205,7 +205,7 @@
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
-	<script src="/js/modal.js">
+	<script src="/2048/js/modal.js">
 
 </body>
 </html>
