@@ -92,6 +92,16 @@ GameManager.prototype.addRandomTile = function () {
   }
 };
 
+
+GameManager.prototype.escapeHtml = function (unsafe) {
+    return unsafe
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
+ }
+
 GameManager.prototype.refreshHighScoreList = function() {
 
 
@@ -141,7 +151,7 @@ GameManager.prototype.refreshHighScoreList = function() {
               var td3 = document.createElement('td');
 
               var text1 = document.createTextNode(i+1);
-              var text2 = document.createTextNode(data[i]['username']);
+              var text2 = document.createTextNode(this.escapeHtml(data[i]['username']));
               var text3 = document.createTextNode(data[i]['highest_score']);
 
               td1.appendChild(text1);
