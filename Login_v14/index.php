@@ -148,13 +148,13 @@
 
 					</form>
 					<div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>
+					<div class="highscores-container" style="max-width: 500px; margin: auto;">
+						<h2 class="title">High Scores</h2>
+						<div id="highscores-list">
+							
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-		<div class="highscores-container" style="max-width: 500px; margin: auto;">
-			<h2 class="title">High Scores</h2>
-			<div id="highscores-list">
-				
 			</div>
 		</div>
 		  <!-- The Modal -->
