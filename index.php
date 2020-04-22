@@ -149,7 +149,7 @@
       <h2>Tips:</h2>
       <ul>
         <li>Merging a &div; block with a regular number will mean that your score will decrease by at least half the original number block's value. Merging with higher numbers will result in a larger hit to your score, so try to merge with the smallest regular block you can, or use the 💣 block to eliminate them</li>
-          <li>Conversely, merging a &times; block with a regular number block will mean your score will increase by at least double the original number block's value. Merger with higher numbers will result in a larger boost to your score. Try to avoid using 💣 to eliminate them</li>
+          <li>Conversely, merging a &times; block with a regular number block will mean your score will increase by at least double the original number block's value. Merging with higher numbers will result in a larger boost to your score. Try to avoid using 💣 to eliminate them</li>
       </ul>
     </div>
 
