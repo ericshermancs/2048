@@ -207,7 +207,7 @@
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
-	<script src="/2048/js/modal.js">
+	<script src="/2048/js/modal.js"></script>
 
 </body>
 </html>
