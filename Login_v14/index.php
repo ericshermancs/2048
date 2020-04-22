@@ -95,10 +95,10 @@
 	<link href="/2048/style/modal.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<div class="container">
 		<div class="heading">
 			<h1 class="title">2x4=8</h1>
 		</div>
+
 		<div class="limiter">
 			<div class="container-login100">
 				<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
@@ -195,8 +195,8 @@
 			      <li>Conversely, merging a &times; block with a regular number block will mean your score will increase by at least double the original number block's value. Merger with higher numbers will result in a larger boost to your score. Try to avoid using 💣 to eliminate them</li>
 			  </ul>
 			</div>
-		</div>
 
+		</div>
 		<div id="dropDownSelect1"></div>
 
 		<!--===============================================================================================-->
@@ -280,6 +280,6 @@
 			http.send();
 		</script>
 
-	</div>
+
 </body>
 </html>
